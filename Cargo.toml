@@ -4,3 +4,27 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+aes = "0.9.1"
+argon2 = "0.5.3"
+async-trait = "0.1.89"
+axum = "0.8.9"
+axum-extra = { version = "0.12.6", features = ["cookie"] }
+block-modes = "0.9.1"
+block-padding = "0.4.2"
+blowfish = "0.10.0"
+chacha20 = "0.10.0"
+chrono = { version = "0.4.45", features = ["serde"] }
+des = "0.9.0"
+jsonwebtoken = "10.4.0"
+lazy_static = "1.5.0"
+rand = "0.10.1"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.150"
+sqlx = { version = "0.9.0", features = ["runtime-async-std", "postgres", "chrono", "uuid", "migrate"] }
+time = "0.3.49"
+tokio = { version = "1.52.3", features = ["full"] }
+tower = "0.5.3"
+tower-http = { version = "0.6.11", features = ["cors", "trace"] }
+tracing-subscriber = "0.3.23"
+uuid = { version = "1.23.3", features = ["serde", "v4", "v7"] }
+validator = { version = "0.20.0", features = ["derive"] }
