@@ -12,7 +12,7 @@ pub enum EncryptionMethod {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, sqlx::Type)]
-pub struct DbConection {
+pub struct DbConnection {
     pub host: String,
     pub username: String,
     pub password: String,
@@ -29,7 +29,7 @@ pub struct User {
     pub encryption_method: Option<EncryptionMethod>,
     pub keys: Option<Vec<u8>>,
     pub api_keys: Option<String>,
-    pub db_connection: Option<Json<DbConection>>,
+    pub db_connection: Option<Json<DbConnection>>,
     pub created_at: Option<DateTime<Utc>>,
     pub updated_at: Option<DateTime<Utc>>,
 }
