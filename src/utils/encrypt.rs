@@ -7,7 +7,7 @@ use blowfish::Blowfish;
 use chacha20::{ChaCha20, KeyIvInit};
 use des::TdesEde3;
 
-use crate::models::EncryptionMethod::{self, Chacha20};
+use crate::models::EncryptionMethod::{self};
 
 const NONCE: [u8; 12] = [0; 12];
 
@@ -18,7 +18,9 @@ pub fn encrypt(method: &EncryptionMethod, key: &[u8], data: &[u8]) -> Vec<u8> {
 
             type Aes256EcbEnc = ecb::Encryptor<Aes256>;
 
-            Aes256EcbEnc::new(&key.into()).encrypt_padded_vec::<Pkcs7>(data)
+            Aes256EcbEnc::new_from_slice(&key)
+                .expect("AES256 generating encryptor from key gone wrong")
+                .encrypt_padded_vec::<Pkcs7>(data)
         }
         EncryptionMethod::Chacha20 => {
             let key: [u8; 32] = key.try_into().expect("Key length must be 32 bytes");
@@ -40,7 +42,7 @@ pub fn encrypt(method: &EncryptionMethod, key: &[u8], data: &[u8]) -> Vec<u8> {
             type BlowfishEcbEnc = ecb::Encryptor<Blowfish>;
 
             BlowfishEcbEnc::new_from_slice(&blowfish_key)
-                .expect("Blowfish encrypting error")
+                .expect("Blowfish generating encryptor from key gone wrong")
                 .encrypt_padded_vec::<Pkcs7>(data)
         }
         EncryptionMethod::DESTripleDES => {
@@ -51,7 +53,7 @@ pub fn encrypt(method: &EncryptionMethod, key: &[u8], data: &[u8]) -> Vec<u8> {
             type TdesEde3EcbEnc = ecb::Encryptor<TdesEde3>;
 
             TdesEde3EcbEnc::new_from_slice(&des_key)
-                .expect("DESTripleDES encrypting error")
+                .expect("DESTripleDES generating encryptor from key gone wrong")
                 .encrypt_padded_vec::<Pkcs7>(data)
         }
     }
