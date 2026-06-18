@@ -11,13 +11,13 @@ pub enum EncryptionMethod {
     DESTripleDES,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, sqlx::Type)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct DbConnection {
     pub host: String,
     pub username: String,
     pub password: String,
     pub database: String,
-    pub port: i16,
+    pub port: u16,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, sqlx::FromRow)]
