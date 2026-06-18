@@ -1,4 +1,5 @@
 pub mod connect_user_database;
+pub mod create_table;
 pub mod decrypt;
 pub mod encrypt;
 pub mod generate_key;
