@@ -15,6 +15,7 @@ mod config;
 mod db;
 mod dtos;
 mod error;
+mod middleware;
 mod models;
 mod secret;
 mod utils;
