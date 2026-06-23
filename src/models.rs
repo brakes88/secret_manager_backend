@@ -38,7 +38,7 @@ pub struct User {
 pub struct Secret {
     pub id: uuid::Uuid,
     pub secret_name: String,
-    pub encryption_secret_value: Vec<u8>,
+    pub encrypted_secret_value: Vec<u8>,
     pub version: i32,
     pub created_at: Option<DateTime<Utc>>,
     pub updated_at: Option<DateTime<Utc>>,
@@ -49,7 +49,7 @@ pub struct SecretVersion {
     pub id: uuid::Uuid,
     pub secret_id: uuid::Uuid,
     pub secret_name: String,
-    pub encryption_secret_value: Vec<u8>,
+    pub encrypted_secret_value: Vec<u8>,
     pub version: i32,
     pub created_at: Option<DateTime<Utc>>,
     pub updated_at: Option<DateTime<Utc>>,
