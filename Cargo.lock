@@ -299,6 +299,7 @@ dependencies = [
  "chacha20",
  "chrono",
  "des",
+ "dotenvy",
  "ecb",
  "jsonwebtoken",
  "lazy_static",
