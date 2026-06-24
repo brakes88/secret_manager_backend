@@ -15,11 +15,11 @@ mod config;
 mod db;
 mod dtos;
 mod error;
+mod handler;
 mod middleware;
 mod models;
 mod secret;
 mod utils;
-
 #[derive(Debug, Clone)]
 pub struct AppState {
     pub env: Config,
