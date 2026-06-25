@@ -1,13 +1,13 @@
 use aes::{
     Aes256,
-    cipher::{BlockModeDecrypt, BlockModeEncrypt, KeyInit, StreamCipher},
+    cipher::{BlockModeDecrypt, KeyInit, StreamCipher},
 };
 use block_padding::Pkcs7;
 use blowfish::Blowfish;
 use chacha20::{ChaCha20, KeyIvInit};
 use des::TdesEde3;
 
-use crate::models::EncryptionMethod::{self, Chacha20};
+use crate::models::EncryptionMethod::{self};
 
 const NONCE: [u8; 12] = [0; 12];
 

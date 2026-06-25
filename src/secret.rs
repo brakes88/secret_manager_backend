@@ -1,5 +1,5 @@
 use async_trait::async_trait;
-use sqlx::{Executor, Pool, Postgres, QueryBuilder};
+use sqlx::{Pool, Postgres, QueryBuilder};
 
 use crate::{
     error::HttpError,

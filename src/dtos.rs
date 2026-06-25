@@ -2,7 +2,7 @@ use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use validator::{Validate, ValidationError};
 
-use crate::models::{EncryptionMethod, Secret, User};
+use crate::models::{EncryptionMethod, User};
 
 fn validate_password(password: &str) -> Result<(), ValidationError> {
     if password.is_empty() {
@@ -161,9 +161,9 @@ fn validate_encryption_method(encryption_method: &EncryptionMethod) -> Result<()
         | EncryptionMethod::Blowfish
         | EncryptionMethod::Chacha20
         | EncryptionMethod::DESTripleDES => Ok(()),
-        _ => Err(ValidationError::new(
-            "encryption_method must be either AES256, Blowfish, Chacha20 or DESTripleDES",
-        )),
+        // _ => Err(ValidationError::new(
+        //     "encryption_method must be either AES256, Blowfish, Chacha20 or DESTripleDES",
+        // )),
     }
 }
 

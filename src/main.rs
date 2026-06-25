@@ -1,15 +1,14 @@
-use axum::{
-    Router,
-    http::{
-        HeaderValue, Method,
-        header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE},
-    },
+use std::sync::Arc;
+
+use axum::http::{
+    HeaderValue, Method,
+    header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE},
 };
 use sqlx::postgres::PgPoolOptions;
 use tower_http::cors::CorsLayer;
 use tracing_subscriber::filter::LevelFilter;
 
-use crate::{config::Config, db::DBClient};
+use crate::{config::Config, db::DBClient, routes::create_router};
 
 mod config;
 mod db;
@@ -18,6 +17,7 @@ mod error;
 mod handler;
 mod middleware;
 mod models;
+mod routes;
 mod secret;
 mod utils;
 #[derive(Debug, Clone)]
@@ -68,7 +68,7 @@ async fn main() {
         db_client,
     };
 
-    let app = Router::<()>::new().layer(cors);
+    let app = create_router(Arc::new(app_state)).layer(cors);
 
     let listener = tokio::net::TcpListener::bind(format!("0.0.0.0:{}", &config.port))
         .await
