@@ -40,8 +40,8 @@ pub struct Secret {
     pub secret_name: String,
     pub encrypted_secret_value: Vec<u8>,
     pub version: i32,
-    pub created_at: Option<DateTime<Utc>>,
-    pub updated_at: Option<DateTime<Utc>>,
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
 }
 
 #[derive(Debug, sqlx::FromRow, Serialize, Deserialize, sqlx::Type, Clone)]
@@ -51,6 +51,6 @@ pub struct SecretVersion {
     pub secret_name: String,
     pub encrypted_secret_value: Vec<u8>,
     pub version: i32,
-    pub created_at: Option<DateTime<Utc>>,
-    pub updated_at: Option<DateTime<Utc>>,
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
 }

@@ -59,7 +59,7 @@ pub struct RequestQueryDto {
     #[validate(range(min = 1))]
     pub page: Option<usize>,
     #[validate(range(min = 1, max = 50))]
-    pub limi: Option<usize>,
+    pub limit: Option<usize>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

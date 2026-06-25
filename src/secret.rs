@@ -3,15 +3,9 @@ use sqlx::{Executor, Pool, Postgres, QueryBuilder};
 
 use crate::{
     error::HttpError,
+    handler::secrets::SavedSecret,
     models::{Secret, SecretVersion},
 };
-
-#[derive(Debug)]
-pub struct SavedSecret {
-    pub secret_name: String,
-    pub encrypted_secret_value: Vec<u8>,
-    pub version: i32,
-}
 
 #[async_trait]
 pub trait SecretRepository {
