@@ -1,23 +1,15 @@
 use std::sync::Arc;
 
-use axum::{
-    Extension, Json, Router,
-    extract::Query,
-    response::IntoResponse,
-    routing::{get, post, put},
-};
+use axum::{Extension, Json, Router, extract::Query, response::IntoResponse, routing::get};
 use validator::Validate;
 
 use crate::{
     AppState,
-    dtos::{
-        EditSecretDto, FilterSecretDto, RequestQuerySecretVersionDto, Response, SaveSecretDto,
-        SecretResponse, SecretResponseDto,
-    },
+    dtos::{FilterSecretDto, RequestQuerySecretVersionDto, SecretResponse, SecretResponseDto},
     error::HttpError,
     middleware::JWTAuthMiddleware,
     secret::{PostgresSecretRepository, SecretRepository},
-    utils::{connect_user_database::connect_to_user_database, decrypt::decrypt, encrypt::encrypt},
+    utils::{connect_user_database::connect_to_user_database, decrypt::decrypt},
 };
 
 pub fn secrets_version_handler() -> Router {
